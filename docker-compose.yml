@@ -1,0 +1,6 @@
+web:
+  image: quay.io/continuouspipe/php7-apache:stable
+  ports:
+      - "8080:80"
+  volumes:
+      - ./:/app
