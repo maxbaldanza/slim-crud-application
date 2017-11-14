@@ -1,0 +1,14 @@
+{% extends "layout.twig" %}
+
+{% block title %}Create user{% endblock %}
+
+{% block content %}
+    <h1>Create user</h1>
+    <form method="post" action="{{ path_for('people/create-post') }}">
+        <div class="form-group">
+            <input type="text" class="form-control" name="name" placeholder="Name">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}

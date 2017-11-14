@@ -12,4 +12,6 @@ require __DIR__ . '/../app/routes.php';
 
 chdir(getcwd() . '/../');
 
+$_SERVER['SCRIPT_NAME'] = '/app.php'; //Fix issue with loading homepage
+
 $app->run();

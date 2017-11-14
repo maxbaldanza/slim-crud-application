@@ -4,29 +4,32 @@
 
 {% block content %}
     <h1>User List</h1>
-    <form>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                </tr>
-            </thead>
-            <tbody>
+    <a href="{{ path_for('people/create') }}" class="btn btn-primary">Create</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for person in people %}
                 <tr>
                     <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="people[][firstname]" placeholder="First name">
-                        </div>
+                        {{ person.uuid }}
                     </td>
                     <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="people[][surname]" placeholder="Last name">
-                        </div>
+                        {{ person.name }}
+                    </td>
+                    <td>
+                        <form action="{{ path_for('people/delete', {'uuid': person.uuid}) }}" method="post">
+                            <input type="hidden" name="_METHOD" value="DELETE"/>
+                            <input type="submit" class="btn btn-warning" value="Delete"/>
+                        </form>
                     </td>
                 </tr>
-            </tbody>
-        </table>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

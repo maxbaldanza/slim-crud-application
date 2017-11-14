@@ -1,8 +1,28 @@
 version: '3'
+
 services:
-  web:
-    image: quay.io/continuouspipe/php7-apache:stable
-    ports:
-      - "8000:80"
-    volumes:
-      - ./:/app
+    web:
+        build:
+            context: .
+        expose:
+            - 80
+            - 443
+        ports:
+            - 81:80
+            - 444:443
+        volumes:
+            - .:/app
+        environment:
+            DEVELOPMENT_MODE: "true"
+            WEB_HTTP: "true"
+        depends_on:
+            - database
+    database:
+        image: mysql:5.7
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: crud
+            MYSQL_USER: crud
+            MYSQL_PASSWORD: crud
+        expose:
+            - 3306

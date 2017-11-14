@@ -1,6 +1,6 @@
 <?php
 
-namespace App\People\Controller;
+namespace App\Homepage\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -15,13 +15,11 @@ class IndexController
         $this->view = $view;
     }
 
-    public function index(ServerRequestInterface $request, ResponseInterface $response)
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response)
     {
-        return $this->view->render($response, 'app/people/index.twig', []);
-    }
-
-    public function put()
-    {
-
+        return $this->view->render(
+            $response,
+            'app/homepage/index.twig'
+        );
     }
 }

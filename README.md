@@ -2,10 +2,6 @@ A base CRUD application using SLIM, twig and bootstrap
 # Setup
 
 ## Install dependencies
-```bash
-composer install
-```
-
 
 ```bash
 npm install
@@ -15,6 +11,13 @@ npm install
 
 ```bash
 docker-compose up
+```
+
+## Database
+
+```
+docker-compose exec web bash
+./bin/doctrine orm:schema:create
 ```
 
 # Assets
